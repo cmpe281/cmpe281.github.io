@@ -6,26 +6,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="bootstrap/css/commentbox.css">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
    <script src="https://www.w3schools.com/lib/w3data.js"></script>
+   <link href="bootstrap/css/commentbox.css" rel='stylesheet' type='text/css'/>
 </head>
 <body>
-
-
-
-<div w3-include-html="user-header.html"></div> 
-
-
-<br><br><br>
-
- <div w3-include-html="footer.html"></div> 
-
-<script>
-w3IncludeHTML();
+<div w3-include-html="user-header.html"></div>
+<div class="container">
+<div class="page-header"><h1>Discussion Here</h1></div>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+    	$.get("http://custom-env.jjkdyjrpmq.us-east-1.elasticbeanstalk.com/servicenode",
+    			  function(data){
+    			  console.log(data.serviceNodeList.length);
+    			  for(i = 0; i < data.serviceNodeList.length; i++){
+ $('#divmain').append("<a href='user-detailedcomment.html?id="+data.serviceNodeList[i].id+"'><div class='row'><div class='col-sm-8'><div class='panel panel-white post panel-shadow'><div class='post-heading'><div class='pull-left image'><img src='http://bootdey.com/img/Content/user_1.jpg' class='img-circle avatar' alt='user profile image'></div><div id='div1' class='pull-left meta'><div class='title h5'><b>"+data.serviceNodeList[i].name+"</b></div></div><br><h6 class='text-muted time'>"+new Date(data.serviceNodeList[i].dateCreated)+"</h6></div><div class='post-description'><h6>CreatedBy:"+data.serviceNodeList[i].createdBy.firstName+"</h6></div></div></div></div></a>")
+    			  }
+    			  });
+    	});
 </script>
 
 
+<div id='divmain'></div>
+</div>
+<div w3-include-html="footer.html"></div> 
+<script>
+w3IncludeHTML();
+</script>
 </body>
-
-
 </html>

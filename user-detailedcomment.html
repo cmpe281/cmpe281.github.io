@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Neighbourhood</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link href="bootstrap/css/commentbox.css" rel='stylesheet' type='text/css'/>
+   <script src="https://www.w3schools.com/lib/w3data.js"></script>
+   <link rel="stylesheet" href="bootstrap/css/detailedcomment.css">
+</head>
+<body>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+    	$.get("http://custom-env.jjkdyjrpmq.us-east-1.elasticbeanstalk.com/servicenode",
+    			  function(data){
+    			  console.log(data.serviceNodeList.length);
+    			  for(i = 0; i < data.serviceNodeList.length; i++){
+    				  $('#divmain').append("<div class='row'><div class='col-sm-8'><div class='panel panel-white post panel-shadow'><div class='post-heading'><div class='pull-left image'><img src='http://bootdey.com/img/Content/user_1.jpg' class='img-circle avatar' alt='user profile image'></div><div id='div1' class='pull-left meta'><div class='title h5'><b>"+data.serviceNodeList[i].name+"</b></div></div><br><h6 class='text-muted time'>"+new Date(data.serviceNodeList[i].dateCreated)+"</h6></div><div class='post-description'><h6>CreatedBy:"+data.serviceNodeList[i].createdBy.firstName+"</h6></div></div></div></div>")
+ $('#divsub').append(
+		 "<div class='row'><div class='col-sm-1'><div class='thumbnail'><img class='img-responsive user-photo' src='https://ssl.gstatic.com/accounts/ui/avatar_2x.png'></div></div><div class='col-sm-5'><div class='panel panel-default'><div class='panel-heading'><strong>"+data.serviceNodeList[i].name+"</strong> <span class='text-muted'>"+data.serviceNodeList[i].name+"</span></div><div class='panel-body'>"+data.serviceNodeList[i].name+"</div></div></div></div>")
+    			  }
+    			  });
+    	});
+</script>
+<div w3-include-html="user-header.html"></div>
+<div class="container">
+<div class="row">
+<div class="col-sm-12">
+<h3>User Discussions</h3>
+</div>
+</div>
+<div id="divmain"></div> 
+<div id="divsub"></div>
+</div>
+<div w3-include-html="footer.html"></div> 
+<script>
+w3IncludeHTML();
+</script>
+</body>
+</html>

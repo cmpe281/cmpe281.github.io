@@ -1,69 +1,58 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
   <title>Neighbourhood</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link href="path/to/bootstrap-editable/css/bootstrap-editable.css" rel="stylesheet">
-  <script src="path/to/bootstrap-editable/js/bootstrap-editable.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ 
    <script src="https://www.w3schools.com/lib/w3data.js"></script>
 </head>
 <body>
-
-
-
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+    	$.get("http://custom-env.jjkdyjrpmq.us-east-1.elasticbeanstalk.com/availedserviceList",
+    			  function(data){
+    			  console.log(data.availedserviceList.length);
+    			  for(i = 0; i < data.availedserviceList.length; i++){
+    			$('#maintable').append('<tr><td>' + data.availedserviceList[i].name + '</td><td>'+ data.availedserviceList[i].comments + '</td><td>'+availedserviceList[i].status +'</table>');
+    			  }
+    			  });
+    	});
+</script>
 <div w3-include-html="user-header.html"></div> 
-
-
-<div class="container">
-  <h2>Service History</h2>
-  <p>Below is the list of services availed by you in the past.</p>
-  <table class="table">
-    <thead>
+<div class="col-md-6 col-md-offset-3">
+<table class="table" id="maintable">
       <tr>
-        <th>Service Name</th>
-        <th>Date Created</th>
-        <th>Status</th>
+        <td><b><label id="service" for="service">Service</label></b></td>
+        <td><b><label id="comment" for="comment">Comments</label></b></td>
+        <td><b><label id="status" for="status">Status</label></b></td>
       </tr>
-    </thead>
-    <tbody>
-      <tr class="success">
-        <td>Plumbing</td>
-        <td>08/05/2017</td>
-        <td>Success</td>
-      </tr>      
-      <tr class="info">
-        <td>Trash</td>
-        <td>03/06/2017</td>
-        <td>Pending</td>
+      <tr>
+        <td>Pay Rent</td>
+        <td>march rent</td>
+        <td>Requested</td>
       </tr>
-      <tr class="info">
-        <td>Parking</td>
-        <td>08/05/2017</td>
-        <td>Pending</td>
+      <tr>
+        <td>Maintenance</td>
+        <td>my kitchen basin is blocked</td>
+        <td>Completed</td>
       </tr>
- 
-   
-
-    </tbody>
+      <tr>
+        <td>ReportingGarbage</td>
+      <td>Its smelling like hell</td>
+        <td>Completed</td>
+      </tr>
   </table>
-  <a  href="user-dashboard.html" type="submit" class="btn btn-success center">Back</a>
-</div>
-
-
-<br><br><br>
-
- <div w3-include-html="footer.html"></div> 
-
+<div w3-include-html="footer.html"></div> 
 <script>
 w3IncludeHTML();
 </script>
-
-
+</div>
 </body>
-
-
 </html>
+
+  

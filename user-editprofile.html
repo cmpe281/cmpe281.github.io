@@ -5,62 +5,72 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link href="path/to/bootstrap-editable/css/bootstrap-editable.css" rel="stylesheet">
-  <script src="path/to/bootstrap-editable/js/bootstrap-editable.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ 
    <script src="https://www.w3schools.com/lib/w3data.js"></script>
 </head>
 <body>
-
-
-
-<div w3-include-html="user-header.html"></div> 
-
-
-<div>
-    <div>
-        <div >
-            <div >
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="false">&times;</button>
-                <h4 >Edit Profile</h4>
-            </div>
-            <form >
-                <div class="modal-body">
-                    <div class="form-group">
-                        <input class="form-control business_skill_id" type="hidden" name="id">
-                        <input class="form-control business_skill_name" name="name" placeholder="Enter Skill" required>
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control business_skill_content" type="hidden" name="content">
-                        <label for="heading">Enter program details</label>
-                        <textarea id="business_skill_content"  name="content"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control business_skill_quote" type="hidden" name="quote">
-                        <input class="form-control business_skill_quote" name="quote" placeholder="Enter Quote" required>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Save changes</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
-
-<br><br><br>
-
- <div w3-include-html="footer.html"></div> 
-
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+    	$.get("http://custom-env.jjkdyjrpmq.us-east-1.elasticbeanstalk.com/user",
+    			  function(data){
+    			  console.log(data.userList.length);
+    			  for(i = 0; i < data.userList.length; i++){
+    			$('#email').val(data.userList[i].email);
+    			$('#password').val(data.userList[i].password);
+    			$('#firstname').val(data.userList[i].firstName);
+    			$('#lastname').val(data.userList[i].lastName);
+    			$('#phonenumber').val(data.userList[i].contactNumber);
+    			$('#address').val(data.userList[i].address);
+    			  }
+    			  });
+    	});
+</script>
+<div w3-include-html="user-header.html"></div>
+<table align="center"> 
+<h1 align="center">Edit Your Details</h1><br>
+<form class="form-inline" role="form" align="center" method="post" action="user-dashboard.html?id=2">
+<tr>
+  <div class="form-group">
+    <td><label for="email">Email address:</label></td>
+    <td><input type="email" class="form-control" id="email"></td>
+  </div></tr>
+  <tr>
+  <div class="form-group">
+    <td><label for="pwd">Password:</label></td>
+    <td><input type="text" class="form-control" id="password"></td>
+  </div></tr>
+  <tr>
+  <div class="form-group">
+   <td> <label for="firstname">Firstname:</label></td>
+   <td> <input type="text" class="form-control" id="firstname"></td>
+  </div></tr>
+  <tr>
+  <div class="form-group">
+   <td> <label for="lastname">Lastname:</label></td>
+    <td><input type="text" class="form-control" id="lastname"></td>
+  </div></tr>
+  <tr>
+  <div class="form-group">
+   <td> <label for="phonenumber">Phone Number:</label></td>
+    <td><input type="text" class="form-control" id="phonenumber"></td>
+  </div></tr>
+  <tr>
+  <div class="form-group">
+    <td><label for="address">Address:</label></td>
+    <td><textarea rows="4" cols="50" id="address" class="form-control"  name="address"></textarea></td>
+  </div></tr></table>
+<br>
+  <div class="form-group" align="center">
+   <button type="submit" align="center" class="btn btn-success">Submit</button>
+  </div>
+</form>
+<br>
+<div w3-include-html="footer.html"></div> 
 <script>
 w3IncludeHTML();
 </script>
-
-
 </body>
-
-
 </html>

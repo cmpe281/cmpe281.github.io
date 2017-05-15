@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Neighbourhood</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   <script src="https://www.w3schools.com/lib/w3data.js"></script>
+</head>
+<body>
+<div w3-include-html="user-header.html"></div> 
+<br><br><br>
+<div align="center">
+<form method="get" action="user-dashboard.html?id=1"><b>Select type of service</b>
+	  <select name="user-service">
+	    <option value="1">Pay Rent</option>
+	    <option value="2">Bedbug Treatment</option>
+	    <option value="3">Plumbing</option>
+	    <option value="4">Pay PG&E</option>
+		<option value="5">Kitchen Maintenance</option></select><br><br>
+	 <label><b>Comment</b></label><br><textarea rows="4" cols="100" id="comment" name="comment"></textarea>
+	  <br><br>
+	  <button type="submit" class="btn btn-success">Submit</button>
+	</form>
+</div>
+<div w3-include-html="footer.html"></div> 
+<script>
+w3IncludeHTML();
+</script>
+
+</body>
+
+
+</html>
