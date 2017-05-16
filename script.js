@@ -272,7 +272,7 @@
   	});
 
     $("#createCluster").click(function(){
-    var  name = document.getElementById('clustername').value      ;
+    var  name = document.getElementById('clustername').value;
     var area = getSelectedValue('optionArea');
     var session_usr =  localStorage.getItem("sessionUsr");
     $.ajax({
@@ -287,15 +287,36 @@
     event.preventDefault();
     });
     $("#submitservice").click(function(){
-        var  comment = document.getElementById('comment').value      ;
+        var comment = document.getElementById('comment').value;
         var serviceid = getSelectedValue('selectservice');
         var session_usr =  localStorage.getItem("sessionUsr");
         $.ajax({
         type: 'POST',
         url: 'http://custom-env.jjkdyjrpmq.us-east-1.elasticbeanstalk.com/userdiscussion',
-        data: JSON.stringify ({clusterServices:{id:serviceid},createdBy:{id:session_usr},comments:comment }),
+        data: JSON.stringify ({clusterServices:{id:serviceid},createdBy:{id:session_usr},comments:comment}),
         success: function(data) {
                                   window.location.href = "user-dashboard.html"; },
+        contentType: "application/json",
+        dataType: 'json'
+        }); 
+        event.preventDefault();
+        });
+    $("#userdetailsupdate").click(function(){
+        var email = document.getElementById('email').value;
+        var password = document.getElementById('password').value;
+        var firstName = document.getElementById('firstname').value;
+        var lastName = document.getElementById('lastname').value;
+        var contactNumber = document.getElementById('phonenumber').value;
+        var address = document.getElementById('address').value;
+        var session_usr =  localStorage.getItem("sessionUsr");
+        var url2= 'http://custom-env.jjkdyjrpmq.us-east-1.elasticbeanstalk.com/user/'+session_usr;
+        $.ajax({
+        type: 'PUT',
+        url: url2,
+        data: JSON.stringify ({email:email,password:password,firstName:firstName,lastName:lastName,contactNumber:contactNumber,address:address}),
+
+        success: function(data) {
+                                  window.location.href ="user-editprofile.html";},
         contentType: "application/json",
         dataType: 'json'
         });    
