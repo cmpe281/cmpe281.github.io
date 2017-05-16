@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<style>
+.center { 
+  width: 300px; 
+  height: 100%;
+  min-width: 700px;
+  max-width: 700px;
+  padding: 40px;
+} 
+</style>
   <title>Neighbourhood</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,22 +17,37 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
    <script src="https://www.w3schools.com/lib/w3data.js"></script>
+    <script src="script.js"></script>
+   
 </head>
 <body>
 <div w3-include-html="user-header.html"></div> 
 <br><br><br>
-<div align="center">
-<form method="get" action="user-dashboard.html?id=1"><b>Select type of service</b>
-	  <select name="user-service">
-	    <option value="1">Pay Rent</option>
-	    <option value="2">Bedbug Treatment</option>
-	    <option value="3">Plumbing</option>
-	    <option value="4">Pay PG&E</option>
-		<option value="5">Kitchen Maintenance</option></select><br><br>
-	 <label><b>Comment</b></label><br><textarea rows="4" cols="100" id="comment" name="comment"></textarea>
-	  <br><br>
-	  <button type="submit" class="btn btn-success">Submit</button>
-	</form>
+<div class="text-center">
+<form class="form-horizontal" method="post">
+  <div class="form-group" align="center">
+    <label class="control-label col-sm-2" for="servicetype">Select type of service</label>
+    <div class="col-sm-4">
+    <select name="user-service" id="selectservice" class="form-control">
+	    <option value="1">Report Illegal Dumping</option>
+	    <option value="2">Report Illegal Parking</option>
+	    <option value="3">Report Crime/Theft</option>
+	    <option value="4">Discussions of Neighbourhood</option>
+	 </select>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="comment">Comment</label>
+    <div class="col-sm-4"> 
+    <textarea rows="4" cols="50" id="comment" class="form-control" name="comment"></textarea>
+    </div>
+  </div>
+  <div class="form-group"> 
+    <div class="col-sm-offset-2 col-sm-4">
+      <button type="submit" id="submitservice" class="btn btn-success">Submit</button>
+    </div>
+  </div>
+</form>
 </div>
 <div w3-include-html="footer.html"></div> 
 <script>
