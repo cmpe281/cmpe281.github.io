@@ -286,6 +286,21 @@
     });    
     event.preventDefault();
     });
+    $("#submitservice").click(function(){
+        var  comment = document.getElementById('comment').value      ;
+        var serviceid = getSelectedValue('selectservice');
+        var session_usr =  localStorage.getItem("sessionUsr");
+        $.ajax({
+        type: 'POST',
+        url: 'http://custom-env.jjkdyjrpmq.us-east-1.elasticbeanstalk.com/userdiscussion',
+        data: JSON.stringify ({clusterServices:{id:serviceid},createdBy:{id:session_usr},comments:comment }),
+        success: function(data) {
+                                  window.location.href = "user-dashboard.html"; },
+        contentType: "application/json",
+        dataType: 'json'
+        });    
+        event.preventDefault();
+        });
     $("#saveCluster").click(function(){
     var  id = document.getElementById('clusterid').value      ;
     var  name = document.getElementById('clustername').value      ;
@@ -306,7 +321,8 @@
   
   
 	$("#goBack").click(function(){
-	window.history.back();
+		window.location.href = "index.html";
+	//window.history.back();
 	});
 
 	$("#login").click(function(event){
@@ -325,7 +341,24 @@
         dataType: "json" 
      	}); 
      event.preventDefault();
-  });	
+  });
+	$("#login_u").click(function(event){
+		   var username = document.getElementById('username').value;   
+	    var password = document.getElementById('password').value; 
+	     $.ajax({
+	        url: "http://custom-env.jjkdyjrpmq.us-east-1.elasticbeanstalk.com/login", 
+	        type: "POST",
+	        data: JSON.stringify({username:username,password:password}),   
+	     success: function(response) { 
+	      if (response.code == "202")
+	      {localStorage.setItem("sessionUsr", response.user.id);
+	     window.location.href = "user-dashboard.html";}
+	     },
+	        contentType: "application/json",
+	        dataType: "json" 
+	     	}); 
+	     event.preventDefault();
+	  });	
 
 $("#clusterList").click(function(event){
       var session_usr = localStorage.getItem("sessionUsr");
